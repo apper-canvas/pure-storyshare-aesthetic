@@ -5,14 +5,14 @@ import ApperIcon from "@/components/ApperIcon"
 import Button from "@/components/atoms/Button"
 import Input from "@/components/atoms/Input"
 import Badge from "@/components/atoms/Badge"
+import ScheduleModal from "@/components/atoms/ScheduleModal"
 import storyService from "@/services/api/storyService"
 import chapterService from "@/services/api/chapterService"
-
 const Write = () => {
   const navigate = useNavigate()
-  const [step, setStep] = useState(1) // 1: Story details, 2: First chapter
+const [step, setStep] = useState(1) // 1: Story details, 2: First chapter
   const [loading, setLoading] = useState(false)
-
+  const [showScheduleModal, setShowScheduleModal] = useState(false)
   // Story data
   const [storyData, setStoryData] = useState({
     title: "",
@@ -26,10 +26,11 @@ const Write = () => {
   })
 
   // Chapter data
-  const [chapterData, setChapterData] = useState({
+const [chapterData, setChapterData] = useState({
     title: "",
     content: "",
-    status: "draft"
+    status: "draft",
+    scheduledPublishAt: null
   })
 
   const availableGenres = [
@@ -114,7 +115,7 @@ const Write = () => {
     }
   }
 
-  const handlePublish = async () => {
+const handlePublish = async () => {
     if (!validateStoryData() || !validateChapterData()) {
       return
     }
@@ -126,14 +127,25 @@ const Write = () => {
       const newStory = await storyService.createStory(storyData)
       
       // Then create the first chapter
-      await chapterService.createChapter({
+      const chapterPayload = {
         ...chapterData,
         storyId: newStory.Id.toString(),
         chapterNumber: 1,
-        status: "published"
-      })
+        status: chapterData.scheduledPublishAt ? "scheduled" : "published"
+      }
 
-      toast.success("Story published successfully!")
+      // Include scheduled publish time if it exists
+      if (chapterData.scheduledPublishAt) {
+        chapterPayload.scheduledPublishAt = chapterData.scheduledPublishAt
+      }
+
+      await chapterService.createChapter(chapterPayload)
+
+      if (chapterData.scheduledPublishAt) {
+        toast.success("Story created and chapter scheduled for release!")
+      } else {
+        toast.success("Story published successfully!")
+      }
       navigate(`/story/${newStory.Id}`)
     } catch (err) {
       toast.error("Failed to publish story")
@@ -143,7 +155,7 @@ const Write = () => {
     }
   }
 
-  const handleSaveDraft = async () => {
+const handleSaveDraft = async () => {
     if (!validateStoryData()) {
       return
     }
@@ -156,12 +168,19 @@ const Write = () => {
       
       // Save chapter as draft if there's content
       if (chapterData.title.trim() || chapterData.content.trim()) {
-        await chapterService.createChapter({
+        const chapterPayload = {
           ...chapterData,
           storyId: newStory.Id.toString(),
           chapterNumber: 1,
           status: "draft"
-        })
+        }
+
+        // Include scheduled publish time if it exists (for draft with scheduling)
+        if (chapterData.scheduledPublishAt) {
+          chapterPayload.scheduledPublishAt = chapterData.scheduledPublishAt
+        }
+
+        await chapterService.createChapter(chapterPayload)
       }
 
       toast.success("Story saved as draft!")
@@ -172,6 +191,23 @@ const Write = () => {
     } finally {
       setLoading(false)
     }
+  }
+
+  const handleSchedule = (scheduledDateTime) => {
+    setChapterData(prev => ({
+      ...prev,
+      scheduledPublishAt: scheduledDateTime
+    }))
+    setShowScheduleModal(false)
+    toast.success("Chapter scheduled successfully!")
+  }
+
+  const clearSchedule = () => {
+    setChapterData(prev => ({
+      ...prev,
+      scheduledPublishAt: null
+    }))
+    toast.success("Schedule cleared!")
   }
 
   return (
@@ -403,12 +439,11 @@ const Write = () => {
             </div>
 
             {/* Actions */}
-            <div className="flex justify-between mt-8 pt-6 border-t border-gray-200">
+<div className="flex justify-between mt-8 pt-6 border-t border-gray-200">
               <Button variant="secondary" onClick={() => setStep(1)}>
                 Back to Story Details
               </Button>
-              
-              <div className="flex space-x-4">
+<div className="flex space-x-3">
                 <Button
                   variant="ghost"
                   onClick={handleSaveDraft}
@@ -416,19 +451,61 @@ const Write = () => {
                 >
                   Save as Draft
                 </Button>
+                
+                {/* Schedule Button */}
+                <Button
+                  variant="secondary"
+                  onClick={() => setShowScheduleModal(true)}
+                  disabled={loading}
+                  className="flex items-center space-x-2"
+                >
+                  <ApperIcon name="Calendar" size={16} />
+                  <span>Schedule Release</span>
+                </Button>
+
                 <Button
                   onClick={handlePublish}
                   disabled={loading}
                   className="flex items-center space-x-2"
                 >
                   {loading && <ApperIcon name="Loader2" className="h-4 w-4 animate-spin" />}
-                  <span>Publish Story</span>
+                  <span>
+                    {chapterData.scheduledPublishAt ? "Save & Schedule" : "Publish Story"}
+                  </span>
                 </Button>
               </div>
+
+              {/* Scheduled Release Info */}
+              {chapterData.scheduledPublishAt && (
+                <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm text-blue-800">
+                      <ApperIcon name="Calendar" size={16} className="inline mr-2" />
+                      Scheduled for: {new Date(chapterData.scheduledPublishAt).toLocaleString()}
+                    </p>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={clearSchedule}
+                      className="text-blue-600 hover:text-blue-700 p-1"
+                    >
+                      <ApperIcon name="X" size={14} />
+                    </Button>
+                  </div>
+                </div>
+              )}
             </div>
+
+            {/* Schedule Modal */}
+            <ScheduleModal
+              isOpen={showScheduleModal}
+              onClose={() => setShowScheduleModal(false)}
+              onSchedule={handleSchedule}
+              loading={loading}
+            />
           </div>
         )}
-      </div>
+</div>
     </div>
   )
 }

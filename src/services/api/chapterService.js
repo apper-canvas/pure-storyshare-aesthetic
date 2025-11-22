@@ -112,7 +112,7 @@ class ChapterService {
   }
 
   // Create new chapter
-  async createChapter(chapterData) {
+async createChapter(chapterData) {
     await this.delay(500)
     
     const newChapter = {
@@ -124,6 +124,11 @@ class ChapterService {
       wordCount: this.countWords(chapterData.content || ""),
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
+    }
+
+    // Include scheduled publish time if provided
+    if (chapterData.scheduledPublishAt) {
+      newChapter.scheduledPublishAt = chapterData.scheduledPublishAt
     }
     
     this.chapters.push(newChapter)
