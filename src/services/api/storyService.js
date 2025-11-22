@@ -69,15 +69,24 @@ class StoryService {
     }))
   }
 
-  // Get trending stories
+// Get trending stories
   async getTrendingStories(limit = 6) {
     await this.delay()
     
+    const now = new Date()
+    
     return this.stories
       .sort((a, b) => {
-        // Sort by a combination of recent activity and popularity
-        const aScore = a.totalVotes + (a.totalViews / 10) + (a.totalComments * 5)
-        const bScore = b.totalVotes + (b.totalViews / 10) + (b.totalComments * 5)
+        // Calculate time decay factor (more recent = higher score)
+        const aTimeDiff = (now - new Date(a.updatedAt)) / (1000 * 60 * 60 * 24) // days
+        const bTimeDiff = (now - new Date(b.updatedAt)) / (1000 * 60 * 60 * 24) // days
+        const aTimeScore = Math.max(0, 30 - aTimeDiff) / 30 // Higher for recent updates
+        const bTimeScore = Math.max(0, 30 - bTimeDiff) / 30
+        
+        // Enhanced trending algorithm with engagement weight and time decay
+        const aScore = (a.totalVotes * 2) + (a.totalViews / 5) + (a.totalComments * 10) + (aTimeScore * 50)
+        const bScore = (b.totalVotes * 2) + (b.totalViews / 5) + (b.totalComments * 10) + (bTimeScore * 50)
+        
         return bScore - aScore
       })
       .slice(0, limit)

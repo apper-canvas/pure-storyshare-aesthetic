@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import StoryGrid from "@/components/organisms/StoryGrid"
 import FilterSidebar from "@/components/organisms/FilterSidebar"
 import SearchBar from "@/components/molecules/SearchBar"
+import TrendingCarousel from "@/components/organisms/TrendingCarousel"
 import Loading from "@/components/ui/Loading"
 import ErrorView from "@/components/ui/ErrorView"
 import Empty from "@/components/ui/Empty"
@@ -118,6 +119,9 @@ const Browse = () => {
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+{/* Trending Carousel */}
+        <TrendingCarousel className="mb-12" />
+
         {/* Header */}
         <div className="mb-8">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
@@ -137,7 +141,6 @@ const Browse = () => {
             </div>
           </div>
         </div>
-
         {/* View Tabs */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center space-x-1 bg-gray-100 rounded-lg p-1">
