@@ -1,0 +1,82 @@
+[
+  {
+    "Id": 1,
+    "chapterId": "1",
+    "userId": "user2",
+    "content": "Absolutely incredible opening chapter! The worldbuilding is immersive and Lyra feels so real and relatable despite the magical setting. I'm already invested in her journey.",
+    "parentCommentId": null,
+    "createdAt": "2024-01-15T10:45:00Z"
+  },
+  {
+    "Id": 2,
+    "chapterId": "1",
+    "userId": "user4",
+    "content": "The way you describe the burning sky gave me chills! Your writing style is absolutely gorgeous. Can't wait to see where this prophecy leads.",
+    "parentCommentId": null,
+    "createdAt": "2024-01-15T14:20:00Z"
+  },
+  {
+    "Id": 3,
+    "chapterId": "1",
+    "userId": "user7",
+    "content": "Fellow fantasy writer here - this is exactly the kind of magic system complexity I love! The prophecy feels genuinely mysterious rather than predictable.",
+    "parentCommentId": null,
+    "createdAt": "2024-01-16T09:30:00Z"
+  },
+  {
+    "Id": 4,
+    "chapterId": "1",
+    "userId": "user1",
+    "content": "Thank you so much! I wanted to create a prophecy that felt like a burden rather than a blessing. Lyra's struggle with destiny vs. choice is central to the whole story.",
+    "parentCommentId": "3",
+    "createdAt": "2024-01-16T11:15:00Z"
+  },
+  {
+    "Id": 5,
+    "chapterId": "2",
+    "userId": "user5",
+    "content": "The Thornwood sounds absolutely magical! I love how you've created a sanctuary that feels both safe and mysterious. Mira is already one of my favorite characters.",
+    "parentCommentId": null,
+    "createdAt": "2024-01-18T15:30:00Z"
+  },
+  {
+    "Id": 6,
+    "chapterId": "2",
+    "userId": "user8",
+    "content": "The moral complexity here is incredible. Neither choice - sacrifice or transformation - feels like a clear 'good' option. That's what makes this story so compelling.",
+    "parentCommentId": null,
+    "createdAt": "2024-01-19T12:20:00Z"
+  },
+  {
+    "Id": 7,
+    "chapterId": "3",
+    "userId": "user1",
+    "content": "The scientific detail in this chapter is amazing! As someone with a physics background, I appreciate how you've made the quantum mechanics feel both plausible and romantic.",
+    "parentCommentId": null,
+    "createdAt": "2023-11-21T08:45:00Z"
+  },
+  {
+    "Id": 8,
+    "chapterId": "3",
+    "userId": "user7",
+    "content": "This concept of falling in love with another version of yourself is so unique and thought-provoking. I'm fascinated by the philosophical implications!",
+    "parentCommentId": null,
+    "createdAt": "2023-11-21T16:30:00Z"
+  },
+  {
+    "Id": 9,
+    "chapterId": "4",
+    "userId": "user3",
+    "content": "The atmosphere at Rosewood Academy is perfect! You've captured that elite boarding school vibe while hinting at much darker secrets underneath.",
+    "parentCommentId": null,
+    "createdAt": "2024-02-01T18:45:00Z"
+  },
+  {
+    "Id": 10,
+    "chapterId": "4",
+    "userId": "user5",
+    "content": "Piper seems like exactly the kind of friend Avery needs - someone who knows the secrets but isn't afraid of them. Great character introduction!",
+    "parentCommentId": null,
+    "createdAt": "2024-02-02T10:20:00Z"
+  }
+]

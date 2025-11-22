@@ -1,0 +1,110 @@
+[
+  {
+    "Id": 1,
+    "username": "user1",
+    "displayName": "Midnight_Scribe",
+    "email": "user1@example.com",
+    "bio": "Fantasy romance writer with a passion for complex magic systems and impossible love stories. Believer in happily ever afters, even when they require saving the world first.",
+    "avatar": "https://images.unsplash.com/photo-1494790108755-2616b811b4c4?w=150&h=150&fit=crop&crop=face",
+    "isWriter": true,
+    "followingAuthors": ["user2", "user4", "user7"],
+    "followersCount": 1247,
+    "createdAt": "2023-08-15T10:30:00Z"
+  },
+  {
+    "Id": 2,
+    "username": "user2",
+    "displayName": "QuantumDreamer",
+    "email": "user2@example.com",
+    "bio": "Sci-fi romance author exploring the intersection of love and technology. PhD in theoretical physics turned storyteller. Currently working on a series about love across dimensions.",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+    "isWriter": true,
+    "followingAuthors": ["user1", "user8"],
+    "followersCount": 2156,
+    "createdAt": "2023-06-20T14:20:00Z"
+  },
+  {
+    "Id": 3,
+    "username": "user3",
+    "displayName": "RosewoodMystery",
+    "email": "user3@example.com",
+    "bio": "Teen mystery and supernatural fiction writer. Former boarding school student with way too many secrets to spill. Loves creating atmospheric stories that keep readers guessing.",
+    "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+    "isWriter": true,
+    "followingAuthors": ["user5", "user9"],
+    "followersCount": 892,
+    "createdAt": "2023-12-01T09:45:00Z"
+  },
+  {
+    "Id": 4,
+    "username": "user4",
+    "displayName": "CoastalStoryteller",
+    "email": "user4@example.com",
+    "bio": "Writer of heartfelt romances set in small coastal towns. Loves stories about second chances, found family, and the healing power of community. Always writing with a cup of tea in hand.",
+    "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+    "isWriter": true,
+    "followingAuthors": ["user1"],
+    "followersCount": 1534,
+    "createdAt": "2023-09-10T16:15:00Z"
+  },
+  {
+    "Id": 5,
+    "username": "user5",
+    "displayName": "VictorianVampire",
+    "email": "user5@example.com",
+    "bio": "Gothic horror and paranormal romance author with a fascination for Victorian England and the creatures that lurk in its shadows. Coffee addict and vintage book collector.",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
+    "isWriter": true,
+    "followingAuthors": ["user3", "user9"],
+    "followersCount": 2891,
+    "createdAt": "2023-07-05T11:30:00Z"
+  },
+  {
+    "Id": 6,
+    "username": "user6",
+    "displayName": "ActionAuthor",
+    "email": "user6@example.com",
+    "bio": "Thriller and action writer specializing in strong female protagonists and high-stakes espionage. Former military, now channeling those experiences into page-turning fiction.",
+    "avatar": "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150&h=150&fit=crop&crop=face",
+    "isWriter": true,
+    "followingAuthors": ["user8"],
+    "followersCount": 1678,
+    "createdAt": "2023-11-12T13:20:00Z"
+  },
+  {
+    "Id": 7,
+    "username": "user7",
+    "displayName": "DragonRiderChronicles",
+    "email": "user7@example.com",
+    "bio": "Epic fantasy author with a love for dragons, magic systems, and coming-of-age stories. Worldbuilding enthusiast who probably spends too much time drawing maps of fictional realms.",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+    "isWriter": true,
+    "followingAuthors": ["user1", "user2"],
+    "followersCount": 3456,
+    "createdAt": "2023-05-18T08:45:00Z"
+  },
+  {
+    "Id": 8,
+    "username": "user8",
+    "displayName": "CyberHeartAuthor",
+    "email": "user8@example.com",
+    "bio": "Cyberpunk and futuristic romance writer exploring what it means to be human in an increasingly digital world. Coder by day, storyteller by night.",
+    "avatar": "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face",
+    "isWriter": true,
+    "followingAuthors": ["user2", "user6"],
+    "followersCount": 1923,
+    "createdAt": "2023-10-03T15:10:00Z"
+  },
+  {
+    "Id": 9,
+    "username": "user9",
+    "displayName": "SmallTownSecrets",
+    "email": "user9@example.com",
+    "bio": "Mystery and horror writer with a specialty in small-town gothic stories. Journalist by training, which means I know exactly how to dig up the secrets that people want to keep buried.",
+    "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face",
+    "isWriter": true,
+    "followingAuthors": ["user3", "user5"],
+    "followersCount": 1067,
+    "createdAt": "2024-01-08T12:25:00Z"
+  }
+]
